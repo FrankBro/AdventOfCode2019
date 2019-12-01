@@ -13,14 +13,10 @@ func calculateFuel(mass int) int {
 }
 
 func recursivelyCalculateFuel(mass int) (sum int) {
-	for {
+	for mass > 0 {
 		mass = (mass / 3) - 2
-		if mass < 0 {
-			break
-		}
-		sum += mass
-		if mass < 3 {
-			break
+		if mass > 0 {
+			sum += mass
 		}
 	}
 	return sum
