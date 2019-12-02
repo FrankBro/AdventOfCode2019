@@ -43,7 +43,7 @@ func findPosition(s string) int {
 }
 
 func readInstruction() string {
-	file, err := os.Open("input")
+	file, err := os.Open("input.txt")
 	util.Check(err)
 	defer file.Close()
 	scanner := bufio.NewScanner(file)

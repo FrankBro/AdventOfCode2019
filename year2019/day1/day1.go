@@ -24,7 +24,7 @@ func recursivelyCalculateFuel(mass int) (sum int) {
 
 func readMasses() []int {
 	masses := make([]int, 0)
-	f, err := os.Open("part1.txt")
+	f, err := os.Open("input.txt")
 	util.Check(err)
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
