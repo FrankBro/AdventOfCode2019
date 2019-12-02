@@ -1,4 +1,4 @@
-module github.com/FrankBro/aoc19
+module github.com/FrankBro/AdventOfCodeGo
 
 go 1.13
 

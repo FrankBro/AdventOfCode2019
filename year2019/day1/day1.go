@@ -5,7 +5,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/FrankBro/aoc19/util"
+	"github.com/FrankBro/AdventOfCodeGo/util"
 )
 
 func calculateFuel(mass int) int {
