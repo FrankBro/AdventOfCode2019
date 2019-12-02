@@ -1,9 +1,6 @@
 package day1
 
 import (
-	"bufio"
-	"os"
-
 	"github.com/FrankBro/AdventOfCodeGo/util"
 )
 
@@ -43,11 +40,5 @@ func findPosition(s string) int {
 }
 
 func readInstruction() string {
-	file, err := os.Open("input.txt")
-	util.Check(err)
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
-	scanner.Scan()
-	line := scanner.Text()
-	return line
+	return util.ReadLine()
 }

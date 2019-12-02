@@ -1,8 +1,6 @@
 package day1
 
 import (
-	"bufio"
-	"os"
 	"strconv"
 
 	"github.com/FrankBro/AdventOfCodeGo/util"
@@ -23,15 +21,12 @@ func recursivelyCalculateFuel(mass int) (sum int) {
 }
 
 func readMasses() []int {
-	masses := make([]int, 0)
-	f, err := os.Open("input.txt")
-	util.Check(err)
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		line := scanner.Text()
+	lines := util.ReadLines()
+	masses := make([]int, len(lines))
+	for i, line := range lines {
 		mass, err := strconv.Atoi(line)
 		util.Check(err)
-		masses = append(masses, mass)
+		masses[i] = mass
 	}
 	return masses
 }

@@ -1,8 +1,6 @@
 package day2
 
 import (
-	"bufio"
-	"os"
 	"strconv"
 	"strings"
 
@@ -75,13 +73,10 @@ func readPresent(line string) present {
 }
 
 func readPresents() []present {
-	presents := make([]present, 0)
-	f, err := os.Open("input.txt")
-	util.Check(err)
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		line := scanner.Text()
-		presents = append(presents, readPresent(line))
+	lines := util.ReadLines()
+	presents := make([]present, len(lines))
+	for i, line := range lines {
+		presents[i] = readPresent(line)
 	}
 	return presents
 }
