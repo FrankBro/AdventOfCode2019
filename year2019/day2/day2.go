@@ -4,23 +4,21 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"sync"
 
+	"github.com/FrankBro/AdventOfCodeGo/intcode"
 	"github.com/FrankBro/AdventOfCodeGo/util"
 )
 
 func eval(codes []int) []int {
-	var addr int
-	for {
-		switch codes[addr] {
-		case 1:
-			codes[codes[addr+3]] = codes[codes[addr+1]] + codes[codes[addr+2]]
-		case 2:
-			codes[codes[addr+3]] = codes[codes[addr+1]] * codes[codes[addr+2]]
-		case 99:
-			return codes
-		}
-		addr += 4
-	}
+	var wg sync.WaitGroup
+	inputChan := make(chan int, 2)
+	outputChan := make(chan int, 1)
+	wg.Add(1)
+	computer := intcode.NewComputer(0, codes, inputChan, outputChan, &wg)
+	go computer.Eval()
+	wg.Wait()
+	return codes
 }
 
 func evalString(line string) string {
